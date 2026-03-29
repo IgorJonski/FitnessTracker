@@ -6,6 +6,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import pl.wsb.fitnesstracker.user.api.User;
 
 import java.time.LocalDate;
 
@@ -21,8 +22,9 @@ public class HealthMetrics {
     @Nullable
     private Long id;
 
-    @Column(name = "user_id", nullable = false)
-    private Long userId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     @Column(name = "date", nullable = false)
     private LocalDate date;
@@ -37,8 +39,8 @@ public class HealthMetrics {
     private Integer heartRate;
 
 
-    public HealthMetrics(Long userId, LocalDate date, Double weight, Double height, Integer heartRate) {
-        this.userId = userId;
+    public HealthMetrics(User user, LocalDate date, Double weight, Double height, Integer heartRate) {
+        this.user = user;
         this.date = date;
         this.weight = weight;
         this.height = height;
