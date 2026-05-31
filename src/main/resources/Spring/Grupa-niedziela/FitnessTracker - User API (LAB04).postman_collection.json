@@ -1,0 +1,228 @@
+{
+  "info": {
+    "_postman_id": "22e8103f-02eb-45e8-8ed0-306db6858fc3",
+    "name": "FitnessTracker - User API (LAB04)",
+    "description": "Kolekcja zapytań testujących sieciowe API CRUD dla użytkowników (LAB04, Grupa-niedziela).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "28628335"
+  },
+  "item": [
+    {
+      "name": "Get all users",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/v1/users",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "v1",
+            "users"
+          ]
+        },
+        "description": "Wylistowanie pełnych informacji o wszystkich użytkownikach."
+      },
+      "response": []
+    },
+    {
+      "name": "Get all simple users",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/v1/users/simple",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "v1",
+            "users",
+            "simple"
+          ]
+        },
+        "description": "Wylistowanie podstawowych informacji (ID + imię i nazwisko)."
+      },
+      "response": []
+    },
+    {
+      "name": "Get user by id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/v1/users/{{userId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "v1",
+            "users",
+            "{{userId}}"
+          ]
+        },
+        "description": "Pobranie szczegółów wybranego użytkownika po ID."
+      },
+      "response": []
+    },
+    {
+      "name": "Search users by email",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/v1/users/email?email=domain.com",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "v1",
+            "users",
+            "email"
+          ],
+          "query": [
+            {
+              "key": "email",
+              "value": "domain.com"
+            }
+          ]
+        },
+        "description": "Wyszukiwanie po fragmencie e-maila, bez rozróżniania wielkości liter (zwraca ID + e-mail)."
+      },
+      "response": []
+    },
+    {
+      "name": "Get users older than",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/v1/users/older/2000-01-01",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "v1",
+            "users",
+            "older",
+            "2000-01-01"
+          ]
+        },
+        "description": "Wyszukiwanie użytkowników starszych niż podana data (birthdate przed datą)."
+      },
+      "response": []
+    },
+    {
+      "name": "Create user",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"firstName\": \"Mike\",\n    \"lastName\": \"Scott\",\n    \"birthdate\": \"1999-09-29\",\n    \"email\": \"mike.scott@domain.com\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/v1/users",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "v1",
+            "users"
+          ]
+        },
+        "description": "Utworzenie nowego użytkownika (201 Created)."
+      },
+      "response": []
+    },
+    {
+      "name": "Update user",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"firstName\": \"Michael\",\n    \"lastName\": \"Scott\",\n    \"birthdate\": \"1965-03-15\",\n    \"email\": \"michael.scott@domain.com\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/v1/users/{{userId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "v1",
+            "users",
+            "{{userId}}"
+          ]
+        },
+        "description": "Aktualizacja wybranego użytkownika."
+      },
+      "response": []
+    },
+    {
+      "name": "Delete user",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/v1/users/{{userId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "v1",
+            "users",
+            "{{userId}}"
+          ]
+        },
+        "description": "Usunięcie użytkownika (204 No Content)."
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    },
+    {
+      "key": "userId",
+      "value": "1"
+    }
+  ]
+}

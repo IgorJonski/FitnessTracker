@@ -44,4 +44,23 @@ public class User {
         this.email = email;
     }
 
+    /**
+     * Updates the mutable attributes of this user with the provided values.
+     *
+     * @param firstName the new first name
+     * @param lastName  the new last name
+     * @param birthdate the new birthdate
+     * @param email     the new email address
+     */
+    public void update(
+            final String firstName,
+            final String lastName,
+            final LocalDate birthdate,
+            final String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthdate = birthdate;
+        this.email = email;
+    }
+
 }
