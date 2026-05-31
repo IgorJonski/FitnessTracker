@@ -1,5 +1,6 @@
 package pl.wsb.fitnesstracker.user.internal;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -36,6 +37,7 @@ class UserServiceImpl implements UserService, UserProvider {
         userRepository.delete(user);
     }
 
+    @Transactional
     @Override
     public User updateUser(final Long userId, final User userData) {
         log.info("Updating User with ID {}", userId);
